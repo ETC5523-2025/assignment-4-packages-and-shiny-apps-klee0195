@@ -4,6 +4,8 @@
 The goal of **housepack** is to help users explore the connection between Australian housing prices, disposable income per capita, and capital gains from 1985 to 2024.
 The package provides cleaned datasets and simple tools to visualise trends that describe how the housing market has evolved across time and regions.
 
+A detailed tutorial and example analysis are available at [housepack website](https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-klee0195/). This site includes a guide explaining the Shiny app’s interactive features and a sample vignette demonstrating how to explore income, housing, and capital gains trends using `housepack`.
+
 ## Installation
 
 You can install the development version of **housepack** from GitHub:
@@ -58,14 +60,11 @@ compare_trends(income_pc, detached_full, base_year = 1990)
 
 <img src="man/figures/rm1.png" width="100%" />
 
-## Example
+## Shiny app
 
 After installation, load the package and open the interactive dashboard:
 
 ``` r
-library(housepack)
-
-# Launch the Shiny app
 run_housepack()
 ```
 
