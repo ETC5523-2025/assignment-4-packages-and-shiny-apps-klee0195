@@ -82,12 +82,32 @@ ui <- navbarPage(
                  # ----- TAB 2: State Map -----
                  tabPanel("State Map",
                           h4("Regional Differences in Detached House Prices"),
-                          plotlyOutput("map_plot", height = "600px"),
+                          plotlyOutput("map_plot", height = "400px"),
                           p(class = "text-muted small",
                             "Darker colours indicate higher detached house price indexes in each state for the
    selected year. For example, in 2024 New South Wales (around 250) stands out with
    much higher prices compared to other regions (typically between 170-190), showing how housing affordability pressures are
-   concentrated in Sydney and nearby areas.")
+   concentrated in Sydney and nearby areas."),
+                          br(),
+                          h4("Trends by State"),
+                          fluidRow(
+                            column(
+                              width = 4,
+                              selectInput(
+                                "selected_state", "Select State:",
+                                choices = c("All", "New South Wales", "Victoria", "Queensland",
+                                            "South Australia", "Western Australia", "Tasmania",
+                                            "Northern Territory", "Australian Capital Territory"),
+                                selected = "All"
+                              )
+                            )
+                          ),
+                          plotlyOutput("state_trend_plot", height = "300px"),
+                          p(class = "text-muted small",
+                            "This line chart shows how detached house prices have increased across states over time.
+         Prices rose steadily nationwide, with New South Wales showing the most significant
+         long-term growth among all regions. Selecting 'All' shows all states together or choose
+         a specific state highlights its price trend across the years.")
                  )
                )
              )
@@ -164,6 +184,48 @@ server <- function(input, output, session) {
                                           "Hobart"    = "Tasmania",
                                           "Darwin"    = "Northern Territory",
                                           "Canberra"  = "Australian Capital Territory"))
+    output$state_trend_plot <- renderPlotly({
+      housing_long <- housing %>%
+        dplyr::select(Date, Year, Quarter, Sydney:Canberra) %>%
+        tidyr::pivot_longer(
+          cols = Sydney:Canberra,
+          names_to = "City",
+          values_to = "Index"
+        ) %>%
+        dplyr::mutate(State = dplyr::recode(City,
+                                            "Sydney" = "New South Wales",
+                                            "Melbourne" = "Victoria",
+                                            "Brisbane" = "Queensland",
+                                            "Adelaide" = "South Australia",
+                                            "Perth" = "Western Australia",
+                                            "Hobart" = "Tasmania",
+                                            "Darwin" = "Northern Territory",
+                                            "Canberra" = "Australian Capital Territory"
+        ))
+
+      if (input$selected_state != "All") {
+        housing_long <- housing_long %>%
+          dplyr::filter(State == input$selected_state)
+      }
+
+      p <- ggplot(housing_long, aes(x = Date, y = Index, color = State)) +
+        geom_line(linewidth = 0.3) +
+        scale_color_viridis_d(option = "mako") +
+        labs(
+          title = ifelse(input$selected_state == "All",
+                         "Detached House Price Trends by State",
+                         paste("Detached House Price Trend –", input$selected_state)),
+          x = "", y = "Index (Base = 100)"
+        ) +
+        theme_housepack +
+        theme(legend.text = element_text(size = 7))
+
+      plotly::ggplotly(p) %>%
+        plotly::layout(
+          legend = list(orientation = "h", x = 0.5, y = -0.25, xanchor = "center")
+        ) %>%
+        plotly::config(displaylogo = FALSE)
+    })
 
     map_data <- aus_map %>%
       dplyr::left_join(housing_year, by = c("name" = "State"))
@@ -177,20 +239,21 @@ server <- function(input, output, session) {
       geom_sf(aes(fill = Index, text = paste0(name, "<br>Index: ", round(Index, 1))),
               color = "white", linewidth = 0.3) +
       scale_fill_viridis_c(option = "mako", na.value = "grey90") +
+      coord_sf(expand = FALSE) +
       labs(title = paste("Detached House Price Index by State –", input$year_trend),
            fill = "Index") +
       theme_minimal(base_size = 13) +
       theme(panel.grid = element_blank(),
-            plot.title = element_text(face = "bold", hjust = 0.5))
+            plot.title  = element_text(face = "bold", hjust = 0.5, size = 12),
+            axis.title  = element_text(size = 10),
+            axis.text   = element_text(size = 9),
+            legend.text = element_text(size = 9))
 
     plotly::ggplotly(p) %>%
       plotly::layout(
-        legend = list(
-          orientation = "h",
-          x = 0.5,
-          y = -0.25,
-          xanchor = "center"
-        )
+        p,
+        margin = list(l = 0, r = 0, t = 40, b = 0),
+        geo = list(fitbounds = "locations", visible = FALSE)
       ) %>%
       plotly::config(displaylogo = FALSE)
   })
