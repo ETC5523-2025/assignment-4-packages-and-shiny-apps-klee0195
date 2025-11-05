@@ -1,4 +1,7 @@
-# _pkgdown.yml
+
+development:
+  mode: release
+
 template:
   bootstrap: 5
   bootswatch: flatly
@@ -7,9 +10,18 @@ navbar:
   structure:
     left: [reference, articles]
     right: [github]
-  github:
-    icon: fa-github
-    href: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-klee0195
+  components:
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-klee0195
+      aria-label: GitHub
+    articles:
+      text: Articles
+      menu:
+        - text: "Getting Started"
+          href: articles/getting-started.html
+        - text: "Example Analysis"
+          href: articles/example-analysis.html
 
 home:
   title: "HousePack"
