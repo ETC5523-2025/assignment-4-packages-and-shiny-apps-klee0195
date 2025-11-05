@@ -62,7 +62,7 @@ compare_trends(income_pc, detached_full, base_year = 1990)
 
 ## Shiny app
 
-After installation, load the package and open the interactive dashboard:
+After installation and loading the package, open the interactive dashboard:
 
 ``` r
 run_housepack()
