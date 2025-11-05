@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Example Analysis using HousePack • housepack</title>
+<title>Why Australia's Housing Boom Outpaced Incomes • housepack</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Example Analysis using HousePack">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Why Australia's Housing Boom Outpaced Incomes">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -29,7 +29,6 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
@@ -37,6 +36,8 @@
     <li><a class="dropdown-item" href="../articles/example-analysis.html">Example Analysis</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/about.html">About Me</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-klee0195" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -53,8 +54,12 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Example Analysis using HousePack</h1>
+      <h1>Why Australia's Housing Boom Outpaced Incomes</h1>
+            <h3 data-toc-skip class="subtitle">Exploring three decades
+of imbalance between wages, homes, and capital gains</h3>
+                        <h4 data-toc-skip class="author">Kim Yen Le</h4>
             
+            <h4 data-toc-skip class="date">2025-11-05</h4>
       
 
       <div class="d-none name"><code>example-analysis.Rmd</code></div>
@@ -62,8 +67,139 @@
 
     
     
-
-  </main>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>In 2024, Guardian Australia asked a big question:<br>
+&gt; <em>“How did Australia’s housing market get so bad - and is it all
+negative gearing’s fault?”</em></p>
+<p>For decades, Australian home prices have climbed far faster than
+wages. This short analysis uses the <code>housepack</code> data and
+tools to examine how <strong>real disposable income, detached house
+prices, and capital gains</strong> evolved since 1985. The goal is to
+visualise the long-term divergence and discuss what it implies for
+affordability.</p>
+</div>
+<div class="section level2">
+<h2 id="income-vs-house-prices">Income vs House Prices<a class="anchor" aria-label="anchor" href="#income-vs-house-prices"></a>
+</h2>
+<p>We start by comparing household income and detached-house prices on a
+base-100 index (1990 = 100).</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compare_trends.html">compare_trends</a></span><span class="op">(</span><span class="va">income_pc</span>, <span class="va">detached_full</span>, base_year <span class="op">=</span> <span class="fl">1990</span><span class="op">)</span></span></code></pre></div>
+<p><img src="example-analysis_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
+<p>The figure shows that while both series rose after the early-1990s
+recession, <strong>housing prices surged far ahead of income</strong>,
+especially through the 2000s and again post-2020. By 2024, the national
+house-price index is <strong>roughly three times its 1990
+level</strong>, whereas income per capita barely quadrupled.</p>
+</div>
+<div class="section level2">
+<h2 id="capital-gains-who-benefited">Capital Gains: Who Benefited?<a class="anchor" aria-label="anchor" href="#capital-gains-who-benefited"></a>
+</h2>
+<p>Housing appreciation also fuels capital gains for owners.</p>
+<p>The <code>cgt_full</code> dataset tracks <strong>average taxable
+capital gains</strong> among individuals.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">cgt_full</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Year</span>, y <span class="op">=</span> <span class="va">Total_gain_adj</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">geom_col</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#1c4c74"</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">labs</span><span class="op">(</span></span>
+<span>title <span class="op">=</span> <span class="st">"Capital Gains from Property Sales"</span>,</span>
+<span>y <span class="op">=</span> <span class="st">"AUD ('000)"</span>, x <span class="op">=</span> <span class="st">""</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">theme_housepack</span></span></code></pre></div>
+<p><img src="example-analysis_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<p>Capital gains spiked in the mid-2000s and again during the pandemic
+housing surge. This pattern reinforces the <strong>wealth
+divide</strong> between those who already owned property and those
+trying to enter the market.</p>
+</div>
+<div class="section level2">
+<h2 id="regional-divergence">Regional Divergence<a class="anchor" aria-label="anchor" href="#regional-divergence"></a>
+</h2>
+<p>Not every state experienced the boom equally.</p>
+<p>We can inspect 2024 values from <code>detached_ful</code> to map
+where housing pressure is greatest.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rnaturalearth/" class="external-link">rnaturalearth</a></span><span class="op">)</span></span>
+<span><span class="va">aus_map</span> <span class="op">&lt;-</span> <span class="fu">rnaturalearth</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_states.html" class="external-link">ne_states</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"australia"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ashmore and Cartier Islands"</span>, <span class="st">"Coral Sea Islands"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">latest_year</span> <span class="op">&lt;-</span> <span class="va">detached_full</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Year</span> <span class="op">==</span> <span class="fl">2024</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu">select</span><span class="op">(</span><span class="va">Year</span>, <span class="va">Quarter</span>, <span class="va">Sydney</span><span class="op">:</span><span class="va">Canberra</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu">summarise</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="va">Sydney</span><span class="op">:</span><span class="va">Canberra</span>, <span class="va">mean</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"City"</span>, values_to <span class="op">=</span> <span class="st">"Index"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu">mutate</span><span class="op">(</span>State <span class="op">=</span> <span class="fu">recode</span><span class="op">(</span><span class="va">City</span>,</span>
+<span><span class="st">"Sydney"</span> <span class="op">=</span> <span class="st">"New South Wales"</span>, <span class="st">"Melbourne"</span> <span class="op">=</span> <span class="st">"Victoria"</span>,</span>
+<span><span class="st">"Brisbane"</span> <span class="op">=</span> <span class="st">"Queensland"</span>, <span class="st">"Adelaide"</span> <span class="op">=</span> <span class="st">"South Australia"</span>,</span>
+<span><span class="st">"Perth"</span> <span class="op">=</span> <span class="st">"Western Australia"</span>, <span class="st">"Hobart"</span> <span class="op">=</span> <span class="st">"Tasmania"</span>,</span>
+<span><span class="st">"Darwin"</span> <span class="op">=</span> <span class="st">"Northern Territory"</span>, <span class="st">"Canberra"</span> <span class="op">=</span> <span class="st">"Australian Capital Territory"</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">map_data</span> <span class="op">&lt;-</span> <span class="va">aus_map</span> <span class="op">|&gt;</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">latest_year</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"name"</span> <span class="op">=</span> <span class="st">"State"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">map_data</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">Index</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">scale_fill_viridis_c</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"mako"</span>, na.value <span class="op">=</span> <span class="st">"grey90"</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Detached-house Price Index by State (2024)"</span>, fill <span class="op">=</span> <span class="st">"Index"</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">theme_minimal</span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">theme</span><span class="op">(</span> plot.title <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span></span>
+<span>        face <span class="op">=</span> <span class="st">"bold"</span>, hjust <span class="op">=</span> <span class="fl">0.5</span>, size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>       panel.grid <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="example-analysis_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<p>New South Wales leads the pack with an index near 250, far above the
+170–190 range seen in most other states. This confirms that the
+affordability crisis is <strong>geographically
+concentrated.</strong></p>
+</div>
+<div class="section level2">
+<h2 id="what-does-it-all-mean">What Does It All Mean?<a class="anchor" aria-label="anchor" href="#what-does-it-all-mean"></a>
+</h2>
+<ul>
+<li><p>Real wages have grown slowly compared with house prices.</p></li>
+<li><p>Taxable capital gains have risen sharply, reflecting windfalls
+for property investors.</p></li>
+<li><p>Regional inequality has deepened - Sydney and Melbourne dominate
+the boom.</p></li>
+</ul>
+<p>In short, Australia’s housing market has decoupled from incomes.
+While structural factors like credit, zoning, and population growth play
+major roles, <strong>tax policy has also amplified the
+imbalance</strong>.</p>
+<p>The rise in taxable capital gains aligns with decades of generous
+investment incentives. <strong>Negative gearing</strong> allows
+investors to offset property losses against other income, encouraging
+leveraged investment in housing. Meanwhile, the <strong>capital-gains
+tax discount</strong> (introduced in 1999) halves the taxable portion of
+long-term gains, further rewarding speculation over
+owner-occupation.</p>
+<p>Our data shows the <em>outcome</em> - income lagging far behind
+housing wealth - but these policies help explain <em>why</em> housing
+has become such a lucrative, unequal market.</p>
+</div>
+<div class="section level2">
+<h2 id="explore-it-yourself">Explore It Yourself<a class="anchor" aria-label="anchor" href="#explore-it-yourself"></a>
+</h2>
+<p>Launch the interactive dashboard directly from the package:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/run_housepack.html">run_housepack</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>The Shiny app allows users to:</p>
+<ul>
+<li><p>Toggle between income, housing, and capital-gains views</p></li>
+<li><p>Explore yearly and regional changes</p></li>
+<li><p>Compare states interactively on a map</p></li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<p>Guardian Australia. (2023). <em>How did Australia’s housing market
+get so bad, and is it all negative gearing’s fault?</em> [Video].
+YouTube.<br><a href="https://www.youtube.com/watch?v=iqUFERBJwoY" class="external-link uri">https://www.youtube.com/watch?v=iqUFERBJwoY</a></p>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 

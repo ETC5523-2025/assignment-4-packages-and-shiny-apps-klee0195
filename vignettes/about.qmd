@@ -1,0 +1,22 @@
+---
+title: "About me"
+format: html
+---
+
+<div style="text-align:center;">
+  <img src="../man/figures/profile.png"
+       width="220"
+       style="border-radius:50%;
+              margin-bottom:20px;
+              display:block;
+              margin-left:auto;
+              margin-right:auto;">
+</div>
+
+Welcome!
+
+I am Kim, a Master of Business Analytics student at Monash University.
+
+With a background in finance and econometrics from my undergraduate studies, I bring an adventurous, challenge-seeking spirit and a strong desire to continue my academic journey at Monash. Through this program, I aim to strengthen my ability to explore data and uncover the stories it tells. These are skills that aligns and resonates with the analytical foundation from my bachelor studies.
+
+I created **Housepack** to make it easier for students and analysts to explore how income, housing, and capital gains in Australia have evolved over time. This project combines what I’ve learned in data storytelling, R programming, and interactive dashboards using `Shiny` and `pkgdown`.

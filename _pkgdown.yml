@@ -8,7 +8,7 @@ template:
 
 navbar:
   structure:
-    left: [reference, articles]
+    left: [articles, reference, about]
     right: [github]
   components:
     github:
@@ -22,6 +22,9 @@ navbar:
           href: articles/getting-started.html
         - text: "Example Analysis"
           href: articles/example-analysis.html
+    about:
+      text: "About Me"
+      href: articles/about.html
 
 home:
   title: "HousePack"
