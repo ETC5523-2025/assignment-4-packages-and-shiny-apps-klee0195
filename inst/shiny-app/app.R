@@ -267,10 +267,16 @@ server <- function(input, output, session) {
     } else if (input$metric1 == "income") {
       p <- income %>%
         filter(Year <= input$year_trend) %>%
-        mutate(Date = as.Date(paste0(Year, "-", Quarter * 3, "-01"))) %>%
-        ggplot(aes(x = Date, y = Income_per_capita)) +
+        mutate(
+          Date = as.Date(paste0(Year, "-", Quarter * 3, "-01")),
+          Income_AUD = Income_per_capita * 1e6
+        ) %>%
+        ggplot(aes(x = Date, y = Income_AUD)) +
         geom_line(color = "#6cb4e4", linewidth = 0.6, linetype = "dashed") +
-        labs(title = "Real Household Disposable Income per Capita", y = "AUD", x = "") +
+        labs(
+          title = "Real Household Disposable Income per Capita",
+          y = "AUD", x = ""
+        ) +
         theme_housepack
     } else if (input$metric1 == "house") {
       p <- housing %>%
@@ -296,7 +302,7 @@ server <- function(input, output, session) {
       ggplot(aes(x = Year, y = Total_gain_adj)) +
       geom_col(fill = "#1c4c74") +
       labs(title = "Average Capital Gains",
-           y = "AUD ('000)", x = "") +
+           y = "Thousand AUD", x = "") +
       theme_housepack
 
     plotly::ggplotly(p) %>% plotly::config(displaylogo = FALSE)
