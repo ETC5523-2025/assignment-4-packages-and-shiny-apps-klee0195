@@ -1,0 +1,31 @@
+# _pkgdown.yml
+template:
+  bootstrap: 5
+  bootswatch: flatly
+
+navbar:
+  structure:
+    left: [reference, articles]
+    right: [github]
+  github:
+    icon: fa-github
+    href: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-klee0195
+
+home:
+  title: "HousePack"
+  description: >
+    Explore Australia's housing, income, and capital gains trends interactively.
+    The package includes processed data, helper functions, and a Shiny dashboard.
+
+reference:
+  - title: "Main Functions"
+    desc: "Core functions for data visualisation"
+    contents:
+      - to_index
+      - compare_trends
+      - run_housepack
+  - title: "Datasets"
+    contents:
+      - income_pc
+      - detached_full
+      - cgt_full
