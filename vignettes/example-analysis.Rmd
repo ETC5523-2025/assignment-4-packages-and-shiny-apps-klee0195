@@ -1,0 +1,8 @@
+---
+title: "Example Analysis using HousePack"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example Analysis using HousePack}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
