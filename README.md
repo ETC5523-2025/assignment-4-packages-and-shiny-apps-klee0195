@@ -10,7 +10,13 @@ You can install the development version of **housepack** from GitHub:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("klee0195/housepack")
+remotes::install_github("ETC5523-2025/assignment-4-packages-and-shiny-apps-klee0195")
+```
+
+After installation, load the package:
+
+``` r
+library(housepack)
 ```
 
 ## Data included
@@ -60,7 +66,7 @@ After installation, load the package and open the interactive dashboard:
 library(housepack)
 
 # Launch the Shiny app
-run_app()
+run_housepack()
 ```
 
 The app shows national and state housing trends.
