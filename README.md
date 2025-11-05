@@ -71,3 +71,5 @@ run_housepack()
 
 The app shows national and state housing trends.
 Users can compare income growth and house prices or view differences across states through an interactive map.
+
+<img src="imgs/rm2.png" width="100%" />
