@@ -33,8 +33,11 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, any::quarto, any::rnaturalearth, local::.
+          extra-packages: any::pkgdown, any::quarto, any::rnaturalearth, any::sf, local::.
           needs: website
+
+      - name: Install rnaturalearthhires
+        run: Rscript -e 'remotes::install_github("ropensci/rnaturalearthhires")'
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
