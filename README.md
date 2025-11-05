@@ -56,7 +56,7 @@ This helps reveal how income and housing costs have diverged since the 1990s.
 compare_trends(income_pc, detached_full, base_year = 1990)
 ```
 
-<img src="imgs/rm1.png" width="100%" />
+<img src="man/figures/rm1.png" width="100%" />
 
 ## Example
 
@@ -72,4 +72,4 @@ run_housepack()
 The app shows national and state housing trends.
 Users can compare income growth and house prices or view differences across states through an interactive map.
 
-<img src="imgs/rm2.png" width="100%" />
+<img src="man/figures/rm2.png" width="100%" />
