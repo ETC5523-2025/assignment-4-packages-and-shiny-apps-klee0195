@@ -1,0 +1,18 @@
+# macOS system files
+.DS_Store
+
+# RStudio & R package build files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Rapp.history
+
+# R build outputs
+.Rcheck/
+*.tar.gz
+*.RDataTmp
+.Rbuildignore
+
+# pkgdown site
+docs/

@@ -1,0 +1,30 @@
+Package: housepack
+Type: Package
+Title: Explore Australian Housing, Income, and Capital Gains Trends
+Version: 0.1.0
+Authors@R: 
+    c(
+      person(
+        "Kim Yen", "Le",
+        email = "klee0195@student.monash.edu",
+        role = c("aut", "cre")
+      )
+    )
+Description: Provides cleaned datasets and interactive tools for exploring the 
+    relationship between Australian housing prices, disposable income per capita, 
+    and capital gains from 1985 to 2024. Includes a Shiny app, functions for 
+    comparing indexed trends, and reproducible data visualisation examples.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 3.5)
+Imports:
+    shiny,
+    ggplot2,
+    plotly,
+    dplyr,
+    sf,
+    bslib,
+    tidyr
+RoxygenNote: 7.3.3
