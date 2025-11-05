@@ -46,8 +46,7 @@ theme_housepack <- ggplot2::theme_minimal(base_size = 13) +
 
 ## Introduction
 
-In 2024, Guardian Australia asked a big question:  
-> *"How did Australia's housing market get so bad - and is it all negative gearing's fault?"*
+In 2024, Guardian Australia asked a big question: *"How did Australia's housing market get so bad?"*
 
 For decades, Australian home prices have climbed far faster than wages. This short analysis uses the `housepack` data and tools to examine how **real disposable income, detached house prices, and capital gains** evolved since 1985. The goal is to visualise the long-term divergence and discuss what it implies for affordability.
 
@@ -59,7 +58,7 @@ We start by comparing household income and detached-house prices on a base-100 i
 compare_trends(income_pc, detached_full, base_year = 1990)
 ```
 
-The figure shows that while both series rose after the early-1990s recession, **housing prices surged far ahead of income**, especially through the 2000s and again post-2020. By 2024, the national house-price index is **roughly three times its 1990 level**, whereas income per capita barely quadrupled.
+The chart shows that while both series rose after the early-1990s recession, **house prices surged far beyond incomes**, especially in the 2000s and again post-2020. By 2024, the national house price index **is about six times its 1990 level**, whereas income per capita barely quadrupled.
 
 ## Capital Gains: Who Benefited?
 

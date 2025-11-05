@@ -58,6 +58,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 <p>The goal of <strong>housepack</strong> is to help users explore the connection between Australian housing prices, disposable income per capita, and capital gains from 1985 to 2024. The package provides cleaned datasets and simple tools to visualise trends that describe how the housing market has evolved across time and regions.</p>
+<p>A detailed tutorial and example analysis are available at <a href="https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-klee0195/">housepack website</a>. This site includes a guide explaining functions in <code>housepack</code> and the Shiny app’s interactive features. I also provide a sample vignette demonstrating how to explore income, housing, and capital gains trends using <code>housepack</code>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -67,7 +68,7 @@
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ETC5523-2025/assignment-4-packages-and-shiny-apps-klee0195"</span><span class="op">)</span></span></code></pre></div>
 <p>After installation, load the package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">housepack</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-klee0195/">housepack</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="data-included">Data included<a class="anchor" aria-label="anchor" href="#data-included"></a>
@@ -98,14 +99,11 @@
 <p><img src="reference/figures/rm1.png" width="100%"></p>
 </div>
 <div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h2 id="shiny-app">Shiny app<a class="anchor" aria-label="anchor" href="#shiny-app"></a>
 </h2>
-<p>After installation, load the package and open the interactive dashboard:</p>
+<p>After installation and loading the package, open the interactive dashboard:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">housepack</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Launch the Shiny app</span></span>
-<span><span class="fu"><a href="reference/run_housepack.html">run_housepack</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/run_housepack.html">run_housepack</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The app shows national and state housing trends. Users can compare income growth and house prices or view differences across states through an interactive map.</p>
 <p><img src="reference/figures/rm2.png" width="100%"></p>
 </div>

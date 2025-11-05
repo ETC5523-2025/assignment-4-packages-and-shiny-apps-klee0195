@@ -5,4 +5,7 @@ articles:
   about: about.html
   example-analysis: example-analysis.html
   getting-started: getting-started.html
-last_built: 2025-11-05T05:42Z
+last_built: 2025-11-05T06:37Z
+urls:
+  reference: https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-klee0195/reference
+  article: https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-klee0195/articles
