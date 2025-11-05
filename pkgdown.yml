@@ -1,0 +1,11 @@
+pandoc: 3.1.11
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles:
+  about: about.html
+  example-analysis: example-analysis.html
+  getting-started: getting-started.html
+last_built: 2025-11-05T07:17Z
+urls:
+  reference: https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-klee0195/reference
+  article: https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-klee0195/articles
