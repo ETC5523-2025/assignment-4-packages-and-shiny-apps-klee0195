@@ -1,0 +1,58 @@
+---
+title: "Getting Started with HousePack"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{getting-started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+library(housepack)
+library(ggplot2)
+```
+
+## Overview
+
+`housepack` provides cleaned datasets and visual tools to explore how Australia's housing market, disposable income, and capital gains have evolved from **1985 to 2024**. It includes both static plotting functions and an interactive Shiny dashboard.
+
+## Datasets included
+
+| Dataset | Description |
+|----------|-------------|
+| `income_pc` | Real household disposable income per capita (quarterly) |
+| `detached_full` | Detached house price index for all states and Australia overall |
+| `cgt_full` | Average capital gains for taxable individuals (1985–2023) |
+
+## Comparing income and housing prices
+
+The `compare_trends()` function normalises both income and housing indices to a base of 100 (default = 1990), showing how house prices outpaced income growth.
+
+```{r}
+compare_trends(income_pc, detached_full)
+```
+
+## Launching the interactive Shiny app
+
+The package includes a built-in Shiny dashboard:
+
+```{r, eval = FALSE}
+run_housepack()
+```
+
+The app allows you to:
+
+- Compare national income, housing, and capital gains
+
+- View state-level differences via a choropleth map
+
+- Analyse long-term trends across regions
+
+## Example interpretation
+
+By 2024, New South Wales reached a detached-house index near 250, while most other states remained between 170 and 190. This reflects how housing affordability pressures are most intense around Sydney.
+
+## Summary
+
+`housepack` connects household income, housing prices, and capital gains in one cohesive toolkit for exploratory analysis of Australia's housing market.
+
